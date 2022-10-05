@@ -19,6 +19,7 @@ public class TestBanking {
 	
 	public static void main(String[] args) {
 		
+		System.out.println("Ejercicio cliente-cuenta");
 //		Creando el cliente Luis Ramos.
 		Customer c = new Customer("Luis", "Ramos");
 //		Creando su cuenta bancario con saldo 500.00.
