@@ -14,7 +14,7 @@ public class MaquinaExpendedora {
 	 * @param numeroSlots int que indica el número de slots que tendrá la máquina.
 	 * @param capacidadSlot int que indica la capacidad (número de unidades) de los slots (ya que se supone que serán los mismos para todos).
 	 */
-	MaquinaExpendedora(int numeroSlots, int capacidadSlot){
+	public MaquinaExpendedora(int numeroSlots, int capacidadSlot){
 		this.caja  = 0;
 		this.creditoIntroducido = 0;
 		this.capacidadSlot = capacidadSlot;
