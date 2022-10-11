@@ -6,13 +6,17 @@ package com.mybank.domain;
  *
  */
 public class Customer {
+	
 	private String firstName;
 	private String lastName;
-	private Account account;
+	private Account[] accounts;
+	private int numOfAccounts;
 	
-	public Customer(String f, String l) {
+	public Customer(String f, String l, int numMaxAccounts) {
 		firstName = f;
 		lastName = l;
+		numOfAccounts = 0;
+		accounts = new Account[numMaxAccounts];
 	}
 
 	public String getFirstName() {
@@ -25,12 +29,23 @@ public class Customer {
 	}
 
 
-	public Account getAccount() {
-		return account;
+	public Account getAccount(int index) {
+		return accounts[index];
 	}
 	
-	public void setAccount(Account acc) {
-		account = acc;
+	public boolean addAccount(Account acc) {
+		for(int i = 0; i< this.accounts.length; i++) {
+			if(this.accounts[i]==null) {
+				this.accounts[i] = acc;
+				this.numOfAccounts++;
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int getNumOfAccounts() {
+		return this.numOfAccounts;
 	}
 
 }

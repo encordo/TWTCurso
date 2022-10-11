@@ -7,7 +7,7 @@ package com.mybank.domain;
  */
 public class Account {
 	
-	private double balance;
+	protected double balance;
 	
 	public Account(double initBalance) {
 		balance = initBalance;

@@ -18,6 +18,7 @@ public class MaquinaExpendedora {
 		this.caja  = 0;
 		this.creditoIntroducido = 0;
 		this.capacidadSlot = capacidadSlot;
+		this.refrescos = new Refresco[numeroSlots];
 		for(int i=0; i<numeroSlots; i++) {
 			refrescos[i] = new Refresco();
 		} 
@@ -78,7 +79,7 @@ public class MaquinaExpendedora {
 			//Comprueba que hay crédito suficiente para comprar el refesco indicado
 			if(this.creditoIntroducido >= this.refrescos[posRefresco].getPrecio()) {
 				//Comprueba si hay cambios para la cantidad introducida.
-				if(this.caja < this.creditoIntroducido - this.refrescos[posRefresco].getPrecio()) {
+				if(this.caja > this.creditoIntroducido - this.refrescos[posRefresco].getPrecio()) {
 					//Resta un refresco al stock
 					this.refrescos[posRefresco].setStock(this.refrescos[posRefresco].getStock()-1);
 					//Se añade el precio del refesco al saldo de la caja.
@@ -96,7 +97,7 @@ public class MaquinaExpendedora {
 				return false;
 			}
 		}else {
-			//Devuelve falso por no poderse hacer la venta por estar el refresco elegido agotado..
+			//Devuelve falso por no poderse hacer la venta por estar el refresco elegido agotado.
 			return false;
 		}
 	}	
@@ -116,6 +117,20 @@ public class MaquinaExpendedora {
 	}
 	
 	/**
+	 * Método para recaudar. Se descontará toda la caja salvo e saldo especificado que servirá de cambios.
+	 * @param saldo int del saldo a dejar en cambios
+	 * @return int de la recaudación. Si la caja es inferior al saldo, dará 0.
+	 */
+	public int recaudar(int saldo) {
+		int recaudacion = 0;
+		if (this.caja >= saldo) {
+			recaudacion = this.caja - saldo;
+			this.caja = saldo;
+		}
+		return recaudacion;
+	}
+	
+	/**
 	 * Método que muestra el infome de ventas.
 	 * @return String informe de ventas en formato texto.
 	 */
@@ -123,4 +138,14 @@ public class MaquinaExpendedora {
 		return "";
 	}
 	
+	public int getCreditoIntroduzido() {
+		return this.creditoIntroducido;
+	}
+	
+	public int getCaja() {
+		return this.caja;
+	}
+	public void setCaja(int saldo) {
+		this.caja = saldo;
+	}
 }

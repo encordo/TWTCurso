@@ -2,26 +2,27 @@ package com.mybank.domain;
 
 public class Bank {
 	
-	private Customer[] customers;
-	private int numOfCustomers;
+	public static final int MAX_ACCOUNTS = 10;
+	public static final int MAX_CUSTOMERS = 1000;
 	
-	public Bank(int size){
-		this.numOfCustomers=0;
-		this.customers = new Customer[size];
+	private static Customer[] customers =  new Customer[MAX_CUSTOMERS];
+	private static int numOfCustomers = 0;
+	
+	private Bank(){
 	}
 	
-	public void addCustomer(String f, String l){
+	public static void addCustomer(String f, String l){
 		//Se busca la primera celda libre y se inserta.
-		this.customers[this.numOfCustomers] = new Customer(f,l);
-		this.numOfCustomers++;
+		Bank.customers[Bank.numOfCustomers] = new Customer(f,l,MAX_ACCOUNTS);
+		Bank.numOfCustomers++;
 
 	}
 	
-	public int getNumOfCustomers() {
+	public static int getNumOfCustomers() {
 		return numOfCustomers;
 	}
 
-	public Customer getCustomer(int index) {
+	public static Customer getCustomer(int index) {
 		return customers[index];
 	}
 }
