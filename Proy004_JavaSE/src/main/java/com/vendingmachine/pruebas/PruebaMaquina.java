@@ -39,6 +39,7 @@ public class PruebaMaquina {
 			System.out.println("¡Gracias por su compra!");
 		} else {
 			System.out.println("Credito introducido insuficente");
+			//if(me)
 		}
 		System.out.println("Caja: " + me.getCaja());
 	}

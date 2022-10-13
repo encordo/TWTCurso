@@ -1,5 +1,7 @@
 package com.mybank.domain;
 
+import com.mybank.exceptions.OverDraftException;
+
 public class CheckingAccount extends Account {
 	//ATRS
 	private double overDraftAmount;
@@ -21,12 +23,11 @@ public class CheckingAccount extends Account {
 	
 	//METS
 	@Override
-	public boolean withdraw(double amt) {
+	public void withdraw(double amt) throws OverDraftException {
 		if(amt <= this.balance + this.overDraftAmount) {
 			this.balance -= amt;
-			return true;
 		} else {
-			return false;
+			throw new OverDraftException("Insufficient funds for overdraft\n", amt - this.balance + this.overDraftAmount);
 		}
 	}
 	

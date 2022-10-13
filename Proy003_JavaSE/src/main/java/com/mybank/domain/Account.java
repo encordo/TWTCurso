@@ -1,11 +1,14 @@
 package com.mybank.domain;
+
+import com.mybank.exceptions.OverDraftException;
+
 /**
  * Clase de cuenta bancaria
  * 
  * @author Alumno
  *
  */
-public class Account {
+public class Account{
 	
 	protected double balance;
 	
@@ -17,17 +20,15 @@ public class Account {
 		return balance;
 	}
 	
-	public boolean deposit(double amt) {
+	public void deposit(double amt) {
 		balance += amt;
-		return true;
 	}
 
-	public boolean withdraw(double amt) {
+	public void withdraw(double amt) throws OverDraftException {
 		if(amt <= balance) {
 			balance -= amt;
-			return true;
 		} else {
-			return false;
+			throw new OverDraftException("Insufficient funds.\n", amt - this.balance);
 		}
 	}
 }

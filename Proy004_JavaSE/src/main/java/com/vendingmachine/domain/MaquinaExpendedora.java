@@ -37,6 +37,7 @@ public class MaquinaExpendedora {
 		this.refrescos[posRefresco].setPrecio(precio);
 		this.refrescos[posRefresco].setStock(this.capacidadSlot);
 	}
+	
 	/**
 	 * Método que ejecuta la inserción de una moneda de 5 céntimos.
 	 */
@@ -48,9 +49,11 @@ public class MaquinaExpendedora {
 	/**
 	 * Método que ejecuta la devolución del cambio.
 	 */
-	public void devolverCambio() {
+	public int devolverCambio() {
 		//Pone a 0 ya que se devuelve todo el crédito restante
+		int vueltas = this.creditoIntroducido;
 		this.creditoIntroducido = 0;
+		return vueltas;
 	}
 	
 	/**
@@ -138,13 +141,26 @@ public class MaquinaExpendedora {
 		return "";
 	}
 	
+	/**
+	 * Método que devuelve el crédito introducido
+	 * @return int del crédito introducido
+	 */
 	public int getCreditoIntroduzido() {
 		return this.creditoIntroducido;
 	}
 	
+	/**
+	 * Método que devuelve la caja (recaudación).
+	 * @return int de la caja
+	 */
 	public int getCaja() {
 		return this.caja;
 	}
+	
+	/**
+	 * Método que que permite configurar el saldo de la caja (de cara a cuanto disponible dejar después de coger la recaudación).
+	 * @param saldo
+	 */
 	public void setCaja(int saldo) {
 		this.caja = saldo;
 	}
