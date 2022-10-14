@@ -1,28 +1,27 @@
 package com.mybank.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bank {
 	
-	public static final int MAX_ACCOUNTS = 10;
-	public static final int MAX_CUSTOMERS = 1000;
+	//public static final int MAX_ACCOUNTS = 10;
+	//public static final int MAX_CUSTOMERS = 1000;
 	
-	private static Customer[] customers =  new Customer[MAX_CUSTOMERS];
-	private static int numOfCustomers = 0;
+	private static List<Customer> customers =  new ArrayList<Customer>();
 	
 	private Bank(){
 	}
 	
 	public static void addCustomer(String f, String l){
-		//Se busca la primera celda libre y se inserta.
-		Bank.customers[Bank.numOfCustomers] = new Customer(f,l,MAX_ACCOUNTS);
-		Bank.numOfCustomers++;
-
+		Bank.customers.add(new Customer(f,l));
 	}
 	
 	public static int getNumOfCustomers() {
-		return numOfCustomers;
+		return Bank.customers.size();
 	}
 
 	public static Customer getCustomer(int index) {
-		return customers[index];
+		return Bank.customers.get(index);
 	}
 }

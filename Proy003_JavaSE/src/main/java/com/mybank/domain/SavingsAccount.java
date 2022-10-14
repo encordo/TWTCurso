@@ -12,4 +12,8 @@ public class SavingsAccount extends Account {
 		// TODO Auto-generated constructor stub
 		this.interestRate = interestRate;
 	}
+	
+	public void getProfits() {
+		this.balance += (balance * this.interestRate) / 100;
+	}
 }

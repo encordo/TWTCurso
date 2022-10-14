@@ -1,4 +1,8 @@
 package com.mybank.domain;
+
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Clase de cliente bancario
  * 
@@ -9,43 +13,38 @@ public class Customer {
 	
 	private String firstName;
 	private String lastName;
-	private Account[] accounts;
-	private int numOfAccounts;
+	private List<Account> accounts;
 	
-	public Customer(String f, String l, int numMaxAccounts) {
-		firstName = f;
-		lastName = l;
-		numOfAccounts = 0;
-		accounts = new Account[numMaxAccounts];
+	public Customer(String f, String l) {
+		this.firstName = f;
+		this.lastName = l;
+		this.accounts = new ArrayList<Account>();
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return this.firstName;
 	}
 
 
 	public String getLastName() {
-		return lastName;
+		return this.lastName;
 	}
 
 
 	public Account getAccount(int index) {
-		return accounts[index];
+		return this.accounts.get(index);
 	}
 	
 	public boolean addAccount(Account acc) {
-		for(int i = 0; i< this.accounts.length; i++) {
-			if(this.accounts[i]==null) {
-				this.accounts[i] = acc;
-				this.numOfAccounts++;
-				return true;
-			}
-		}
-		return false;
+		return this.accounts.add(acc);
+		/*
+		 * for(int i = 0; i< this.accounts.length; i++) { if(this.accounts[i]==null) {
+		 * this.accounts[i] = acc; this.numOfAccounts++; return true; } } return false;
+		 */
 	}
 	
 	public int getNumOfAccounts() {
-		return this.numOfAccounts;
+		return this.accounts.size();
 	}
 
 }

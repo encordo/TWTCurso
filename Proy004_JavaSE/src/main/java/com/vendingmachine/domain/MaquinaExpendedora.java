@@ -1,12 +1,15 @@
 package com.vendingmachine.domain;
 
+import java.util.ArrayList;
+
 public class MaquinaExpendedora {
 	
 	//ATRIBUTOS*****************************************************************************************************************************
 	private int caja; // Recaudación en céntimos.
 	private int creditoIntroducido; // Crédito introducido por el usuario.
 	private int capacidadSlot; //Capacidad máxima de cada slot.
-	private Refresco [] refrescos; //Slots con refrescos a vender.
+	//private Refresco [] refrescos; //Slots con refrescos a vender.
+	private ArrayList<Refresco> refrescos;
 	
 	//CONSTRUCTORES*************************************************************************************************************************
 	/**
@@ -18,10 +21,10 @@ public class MaquinaExpendedora {
 		this.caja  = 0;
 		this.creditoIntroducido = 0;
 		this.capacidadSlot = capacidadSlot;
-		this.refrescos = new Refresco[numeroSlots];
-		for(int i=0; i<numeroSlots; i++) {
-			refrescos[i] = new Refresco();
-		} 
+		this.refrescos = new ArrayList<Refresco>(capacidadSlot);
+		/*
+		 * for(int i=0; i<numeroSlots; i++) { refrescos[i] = new Refresco(); }
+		 */
 	}
 	
 	//MÉTODOS********************************************************************************************************************************
@@ -33,9 +36,11 @@ public class MaquinaExpendedora {
 	 */
 	public void configurarRefesco(int posRefresco, String nombre, int precio) {
 		//Mete los parámetros. Se considera que el stock se llena al máximo.
-		this.refrescos[posRefresco].setNombre(nombre);
-		this.refrescos[posRefresco].setPrecio(precio);
-		this.refrescos[posRefresco].setStock(this.capacidadSlot);
+		Refresco r = new Refresco();
+		r.setNombre(nombre);
+		r.setPrecio(precio);
+		r.setStock(this.capacidadSlot);
+		refrescos.add(r);
 	}
 	
 	/**
@@ -63,9 +68,9 @@ public class MaquinaExpendedora {
 	 */
 	public int reponerRefresco(int posRefresco) {
 		//Calcula cuantos refrescos hay que añadir hasta llenar el slot
-		int cantidadRepuesta = this.refrescos.length - this.refrescos[posRefresco].getStock();
+		int cantidadRepuesta = this.refrescos.size() - this.refrescos.get(posRefresco).getStock();
 		//Pone el slot al máximo.
-		this.refrescos[posRefresco].setStock(this.refrescos.length);
+		this.refrescos.get(posRefresco).setStock(capacidadSlot);
 		//Devuelve el número de refescos añadidos para rellenar.
 		return cantidadRepuesta;
 	}
@@ -78,15 +83,15 @@ public class MaquinaExpendedora {
 	 */
 	public boolean venderRefresco(int posRefresco) {
 		//Comprueba que el refresco no esté agotado
-		if(!refrescoAgotado(posRefresco)) {
+		if(!refrescoAgotado(posRefresco)) { //this.refrescos.get(posRefresco)
 			//Comprueba que hay crédito suficiente para comprar el refesco indicado
-			if(this.creditoIntroducido >= this.refrescos[posRefresco].getPrecio()) {
+			if(this.creditoIntroducido >= this.refrescos.get(posRefresco).getPrecio()) {
 				//Comprueba si hay cambios para la cantidad introducida.
-				if(this.caja > this.creditoIntroducido - this.refrescos[posRefresco].getPrecio()) {
+				if(this.caja > this.creditoIntroducido - this.refrescos.get(posRefresco).getPrecio()) {
 					//Resta un refresco al stock
-					this.refrescos[posRefresco].setStock(this.refrescos[posRefresco].getStock()-1);
+					this.refrescos.get(posRefresco).setStock(this.refrescos.get(posRefresco).getStock()-1);
 					//Se añade el precio del refesco al saldo de la caja.
-					this.caja += this.refrescos[posRefresco].getPrecio();
+					this.caja += this.refrescos.get(posRefresco).getPrecio();
 					//Devuelve el cambio
 					devolverCambio();
 					//Devuelve verdadero para confirmar que se ha hecho la venta.
@@ -112,7 +117,7 @@ public class MaquinaExpendedora {
 	 */
 	public boolean refrescoAgotado(int posRefresco) {
 		//Comprueba y devuelve resultados segun descrito arriba.
-		if(this.refrescos[posRefresco].getStock() == 0) {
+		if(this.refrescos.get(posRefresco).getStock() == 0) {
 			return true;
 		}else {
 			return false;
