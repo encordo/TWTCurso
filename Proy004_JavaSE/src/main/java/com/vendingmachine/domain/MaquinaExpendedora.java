@@ -8,7 +8,8 @@ public class MaquinaExpendedora {
 	private int caja; // Recaudación en céntimos.
 	private int creditoIntroducido; // Crédito introducido por el usuario.
 	private int capacidadSlot; //Capacidad máxima de cada slot.
-	//private Refresco [] refrescos; //Slots con refrescos a vender.
+	//private ArrayList<Moneda> creditoIntroducido;
+	//private ArrayList<Moneda> caja;
 	private ArrayList<Refresco> refrescos;
 	
 	//CONSTRUCTORES*************************************************************************************************************************
