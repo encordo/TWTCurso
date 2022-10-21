@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Cuentas Cliente</h1>
+		<h1>Cuentas de ${requestScope.nombre} ${requestScope.apellido}</h1>
 		<table class="table table-bordered table-dark">
 			<tr><th>Nº</th><th>Saldo</th></tr>
 			<c:forEach var="cuenta" items="${requestScope.lista}" varStatus="loop">

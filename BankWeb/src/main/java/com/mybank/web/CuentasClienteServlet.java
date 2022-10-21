@@ -32,11 +32,15 @@ public class CuentasClienteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String paramIdCliente = request.getParameter("idCliente");
+		String paramNombre= request.getParameter("nombre");
+		String paramApellido = request.getParameter("apellido");
 		int idCliente = Integer.parseInt(paramIdCliente);
 		CuentasClienteService ccs = new CuentasClienteService();
 		List<Account> la = ccs.getCuentasCliente(idCliente);
 		
 		request.setAttribute("lista", la);
+		request.setAttribute("nombre", paramNombre);
+		request.setAttribute("apellido", paramApellido);
 		
 		//llamar
 		RequestDispatcher rd  = request.getRequestDispatcher("cuentas-cliente.jsp");

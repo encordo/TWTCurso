@@ -23,7 +23,7 @@
 				<td>${cliente.firstName}</td>
 				<td>${cliente.lastName}</td>
 				<td>${cliente.numOfAccounts}</td>
-				<td><a href="cuentasCliente?idCliente=${loop.index}" class="btn btn-secondary">Cuentas</a></td>
+				<td><a href="cuentasCliente?idCliente=${loop.index}&nombre=${cliente.firstName}&apellido=${cliente.lastName}" class="btn btn-secondary">Cuentas</a></td>
 			</tr>
 			</c:forEach>
 		</table>
