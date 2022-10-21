@@ -20,7 +20,7 @@
 			<tr><th>Nº</th><th>Saldo</th></tr>
 			<c:forEach var="cuenta" items="${requestScope.lista}" varStatus="loop">
 			<tr>
-				<td>${loop+1}</td>
+				<td>${loop.index+1}</td>
 				<td>${cuenta.balance}</td>
 			</tr>
 			</c:forEach>
