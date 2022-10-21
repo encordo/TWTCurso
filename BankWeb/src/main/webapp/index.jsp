@@ -14,9 +14,11 @@
 </head>
 <body>
 <div class="container">
-<h1>Banco On line</h1>
-<div><a href="listaClientes" class="btn btn-primary">Lista de clientes</a></div>
-<div>En construcción</div>
+	<h1>Banco On line</h1>
+	<div class="btn-group-vertical">
+		<a href="listaClientes" class="btn btn-primary  align-self-center">Lista de clientes</a>
+		<a href="" class="btn btn-secondary align-self-center">Próximamente</a>
+	</div>
 </div>
 </body>
 </html>

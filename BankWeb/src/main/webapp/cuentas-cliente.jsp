@@ -17,10 +17,11 @@
 	<div class="container">
 		<h1>Cuentas de ${requestScope.nombre} ${requestScope.apellido}</h1>
 		<table class="table table-bordered table-dark">
-			<tr><th>Nº</th><th>Saldo</th></tr>
+			<tr><th>Nº</th><th>Tipo</th><th>Saldo</th></tr>
 			<c:forEach var="cuenta" items="${requestScope.lista}" varStatus="loop">
 			<tr>
 				<td>${loop.index+1}</td>
+				<td>${cuenta.class.simpleName=="SavingsAccount"?"Cuenta de ahorros":"Cuenta corriente"}</td>
 				<td>${cuenta.balance}</td>
 			</tr>
 			</c:forEach>
