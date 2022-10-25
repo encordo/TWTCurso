@@ -27,6 +27,10 @@
 			</tr>
 			</c:forEach>
 		</table>
+		<div class="btn-group">
+			<a href="javascript:history.back()" class="btn btn-danger">Anterior</a>
+			<a href="index.jsp" class="btn btn-success">Menú principal</a>
+		</div>
 	</div>
 </body>
 </html>

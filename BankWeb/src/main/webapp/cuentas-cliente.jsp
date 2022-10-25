@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Cuentas de ${requestScope.nombre} ${requestScope.apellido}</h1>
+		<h1>Cuentas de ${param.nombre} ${param.apellido}</h1>
 		<table class="table table-bordered table-dark">
 			<tr><th>Nº</th><th>Tipo</th><th>Saldo</th></tr>
 			<c:forEach var="cuenta" items="${requestScope.lista}" varStatus="loop">
@@ -26,6 +26,10 @@
 			</tr>
 			</c:forEach>
 		</table>
+		<div class="btn-group">
+			<a href="javascript:history.back()" class="btn btn-danger">Anterior</a>
+			<a href="index.jsp" class="btn btn-success">Menú principal</a>
+		</div>
 	</div>
 </body>
 </html>
