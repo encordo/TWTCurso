@@ -19,11 +19,11 @@
 		<div class="container border border-dark">
 			<form id="f1" method="post" action="login">
 			  <div class="mb-3">
-			    <label for="descripcion" class="form-label">Usuario</label>
+			    <label for="usuario" class="form-label">Usuario</label>
 			    <input type="text" class="form-control" id="usuario" name="usuario">
 			  </div>
 			  <div class="mb-3">
-			    <label for="precio" class="form-label">Rol</label>
+			    <label for="rol" class="form-label">Rol</label>
 				<select class="form-select" id="rol" name="rol">
 					<option value="Cliente">Cliente</option>
 					<option value="Administrador">Administrador</option>

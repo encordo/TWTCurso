@@ -24,8 +24,16 @@
 	</div>
 	<div class="container border border-black">
 		<form action="comprar" method="get">
-			<div><label>Id: </label> <input type="text" name="idProducto"></div>
-			<div><label>Cantidad: </label> <input type="number" name="cantidad" value="1" min="1"></div>
+<!-- 			<div><label>Id: </label> <input type="text" name="idProducto"></div> -->
+			<div>
+				<label for="iproducto">Producto: </label>
+				<select id="iproducto" name="idProducto">
+				<c:forEach var="producto" items="${requestScope.lista}">
+					<option value="${producto.idProducto}">${producto.descripcion}</option>
+				</c:forEach>
+				</select>
+			</div>
+			<div><label for="icantidad">Cantidad: </label> <input id="icantidad" type="number" name="cantidad" value="1" min="1"></div>
 			<button>Compar</button>
 		</form>
 	</div>
