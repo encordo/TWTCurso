@@ -8,7 +8,18 @@ import com.curso.mercado.entidades.Producto;
 
 public class ProductoJPADAO implements GenericDAO<Producto> {
 	
-	private static  EntityManagerFactory factory = Persistence.createEntityManagerFactory("OracleHRPU");
+	//private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("OracleHRPU");
+	private static EntityManagerFactory factory;
+	
+	static {
+		System.out.println("....... CREAR FACTORIA DE EM");
+		factory = Persistence.createEntityManagerFactory("OracleHRPU");
+	}
+	
+	
+	public ProductoJPADAO() {
+		
+	}
 
 	@Override
 	public void add(Producto entidad) {
@@ -16,7 +27,7 @@ public class ProductoJPADAO implements GenericDAO<Producto> {
 		try {
 			em.getTransaction().begin();
 			em.persist(entidad);
-			em.getTransaction().rollback();
+			em.getTransaction().commit();
 		} catch (Exception e) {
 			//e.printStackTrace();
 			em.getTransaction().rollback();
@@ -30,7 +41,7 @@ public class ProductoJPADAO implements GenericDAO<Producto> {
 		List<Producto> lProductos = null;
 		EntityManager em = factory.createEntityManager();
 		try {
-			Query consulta = em.createQuery("SELECT prod FROM Producto p");
+			Query consulta = em.createQuery("SELECT p FROM Producto p");
 			lProductos = consulta.getResultList();
 			
 		} catch (Exception e) {
@@ -54,7 +65,7 @@ public class ProductoJPADAO implements GenericDAO<Producto> {
 			//Se deriva la riada de fallos a RuntimeException
 			throw new RuntimeException("DB JDBC AP. " + e.getMessage(),e);
 		}
-		return null;
+		return prod;
 	}
 
 	@Override

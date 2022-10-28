@@ -14,20 +14,19 @@ public class Producto implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PRODUCTO_SEQ") //Gestionará la generación de la PK
 	@SequenceGenerator(sequenceName="CURSO_SEQ", name="PRODUCTO_SEQ", allocationSize=1) //Se vincula a la secuencia
 	private Integer idProducto;
-	@Column(name="DESRIPCION")
+	@Column(name="DESCRIPCION")
 	private String descripcion;
 	@Column(name="PRECIO")
-	private double precio;
+	private Double precio;
 	@Column(name="STOCK")
-	private int stock;
+	private Integer stock;
 	
 	
 	public Producto() {
-		super();
 	}
 
 
-	public Producto(Integer idProducto, String descripcion, double precio, int stock) {
+	public Producto(Integer idProducto, String descripcion, Double precio, Integer stock) {
 		super();
 		this.idProducto = idProducto;
 		this.descripcion = descripcion;
@@ -56,21 +55,21 @@ public class Producto implements Serializable{
 	}
 
 
-	public double getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
 
 
-	public void setPrecio(double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 
 	
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
 	
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 

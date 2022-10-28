@@ -7,6 +7,7 @@ import com.curso.mercado.entidades.Producto;
 import com.curso.mercado.persistencia.GenericDAO;
 import com.curso.mercado.persistencia.ProductoDBDAO;
 import com.curso.mercado.persistencia.ProductoInMemoryDAO;
+import com.curso.mercado.persistencia.ProductoJPADAO;
 import com.curso.mercado.servicios.excepciones.VentasException;
 
 public class VentasService {
@@ -16,8 +17,11 @@ public class VentasService {
 	
 	
 	public VentasService() {
-		PoolConexiones pc = new PoolConexiones();
-		this.dao = new ProductoDBDAO(pc.getConnection());
+		//Version JDBC
+//		PoolConexiones pc = new PoolConexiones();
+//		this.dao = new ProductoDBDAO(pc.getConnection());
+		//Version JPA
+		this.dao = new ProductoJPADAO();
 		
 	}
 	// todos los metodos para gestionar un proceso de venta

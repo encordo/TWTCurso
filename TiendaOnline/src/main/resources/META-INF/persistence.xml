@@ -6,14 +6,9 @@
 	<!--  otra unidad persistenci para ir HR de oracle -->
 	<persistence-unit name="OracleHRPU" transaction-type="RESOURCE_LOCAL">
 		
-<!-- 		<class>com.curso.jpa.entidades.Empleado</class> -->
-<!-- 		<class>com.curso.jpa.entidades.Trabajo</class> -->
-<!-- 		<class>com.curso.jpa.entidades.Record</class> -->
-<!-- 		<class>com.curso.jpa.entidades.Customer</class> -->
-<!-- 		<class>com.curso.jpa.entidades.Order</class> -->
-<!-- 		<class>com.curso.jpa.entidades.Departamento</class> -->
+			<class>com.curso.mercado.entidades.Producto</class>
 		<!-- Todas las clases @Entity del proyecto quedarán automáticamente incluidas -->
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+<!-- 		<exclude-unlisted-classes>false</exclude-unlisted-classes> -->
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />

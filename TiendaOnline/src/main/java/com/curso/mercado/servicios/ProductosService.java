@@ -10,15 +10,18 @@ import com.curso.mercado.entidades.Producto;
 import com.curso.mercado.persistencia.GenericDAO;
 import com.curso.mercado.persistencia.ProductoDBDAO;
 import com.curso.mercado.persistencia.ProductoInMemoryDAO;
+import com.curso.mercado.persistencia.ProductoJPADAO;
 
 public class ProductosService {
 	
 	private GenericDAO<Producto> dao;
 	
 	public ProductosService() {
-		PoolConexiones pc = new PoolConexiones();
-		this.dao = new ProductoDBDAO(pc.getConnection());
-		
+		//Version JDBC
+//		PoolConexiones pc = new PoolConexiones();
+//		this.dao = new ProductoDBDAO(pc.getConnection());
+		//Version JPA
+		this.dao = new ProductoJPADAO();
 	}
 	
 	public void darAltaUnProducto(Producto p) {
